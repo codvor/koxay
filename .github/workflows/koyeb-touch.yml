@@ -1,0 +1,14 @@
+name: Koyeb-touch
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+    steps:
+    - uses: actions/checkout@v1
+    - name: Koyeb-touch
+      run: |
+        VERSION='v1.0.1'
+        tar xvf <(curl -sL https://github.com/ReeceM/koyeb-touch/releases/download/$VERSION/koyeb-touch-$VERSION-linux-amd64.tar.gz)
+        chmod +x koyeb-touch
+        ./koyeb-touch $KOYEB_API_TOKEN $KOYEB_APP_NAME $KOYEB_SERVICE_NAME
